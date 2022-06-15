@@ -153,4 +153,54 @@ void free_line_list(line_list **head);
 /* lists2.c */
 r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
 void free_rvar_list(r_var **head);
+
+/* error */
+int get_error(data_shell *datash, int eval);
+char *strcat_cd(data_shell *, char *, char *, char *);
+char *error_get_cd(data_shell *datash);
+char *error_not_found(data_shell *datash);
+char *error_exit_shell(data_shell *datash);
+char *error_get_alias(char **args);
+char *error_env(data_shell *datash);
+char *error_syntax(char **args);
+char *error_permission(char **args);
+char *error_path_126(data_shell *datash);
+
+/* exec_line */
+int exec_line(data_shell *datash);
+
+/* get_builtin */
+int (*get_builtin(char *cmd))(data_shell *datash);
+
+/* cmd */
+int is_cdir(char *path, int *i);
+char *_which(char *cmd, char **_environ);
+int is_executable(data_shell *datash);
+int check_error_cmd(char *dir, data_shell *datash);
+int cmd_exec(data_shell *datash);
+
+/* shell*/
+int cd_shell(data_shell *datash);
+int exit_shell(data_shell *datash);
+
+/* cd */
+void cd_dot(data_shell *datash);
+void cd_to(data_shell *datash);
+void cd_previous(data_shell *datash);
+void cd_to_home(data_shell *datash);
+
+/* help.c */
+void help_env(void);
+void help_setenv(void);
+void help_unsetenv(void);
+void help_general(void);
+void help_exit(void);
+
+/* help2.c */
+void help(void);
+void help_alias(void);
+void help_cd(void);
+
+/* get_help.c */
+int get_help(data_shell *datash);
 #endif
